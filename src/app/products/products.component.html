@@ -1,0 +1,13 @@
+<table class="table table-light table-hover table-striped table-general">
+        <thead class="encabezado-tabla">
+            <th>Name</th>
+            <th>Email</th>
+        </thead>        
+        <tbody *ngIf="clients">
+            <tr *ngFor="let c of clients" (click)="selectRow(c.id)" [ngClass] = "{'table-primary': isSelected(c)}">
+                <td>{{ c.name }}</td>
+                <td>{{ c.email }}</td>
+                <td><a [routerLink]="['/policies/',c.name]">View Policies</a></td>
+            </tr>
+        </tbody>        
+    </table>

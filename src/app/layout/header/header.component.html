@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand navbar-light">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">your application!</a>
+
+    <ul class="nav navbar-nav pull-xs-right">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home">
+          home
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="!(isLoggedIn | async)">
+        <a class="nav-link" (click)="login()">
+          login
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="!(isLoggedIn | async)">
+        <a class="nav-link" routerLink="/auth/register">
+          register
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="(isLoggedIn | async)">
+        <a class="nav-link" (click)="logout()">
+          logout
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
