@@ -67,7 +67,9 @@ export class AuthService {
         // Check whether the current time is past the
         // access token's expiry time
         const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}');
-        return new Date().getTime() < expiresAt;
+        const result = new Date().getTime() < expiresAt;
+        this.loggedInSubject.next(result);
+        return result;
     }
 
     isLoggedIn(): Observable<boolean> {

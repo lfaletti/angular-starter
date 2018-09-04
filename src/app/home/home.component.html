@@ -1,3 +1,11 @@
-<button class="btn btn-primary" routerLink='/products'>
-    Manage my Products
-</button>
+<div class="row">
+    <div class="col-md-12 text-center" *ngIf="isLoggedIn()">
+        <button class="btn btn-primary" routerLink='/products'>
+            Manage my Products
+        </button>
+    </div>
+
+    <div class="col-md-12 text-center" *ngIf="!isLoggedIn()">
+           <p>Welcome to your application, please log in!</p>
+        </div>
+</div>
