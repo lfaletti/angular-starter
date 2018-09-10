@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -6,8 +7,6 @@ import { catchError } from 'rxjs/operators';
 import { Product } from '../models/typings';
 import { AlertService } from '../shared/services/alert.service';
 import { ProductService } from './services/product.service';
-import { map } from 'rxjs/operator/map';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class ProductsResolve implements Resolve<Observable<Product>> {

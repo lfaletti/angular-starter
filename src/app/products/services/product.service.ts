@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { _throw } from 'rxjs/observable/throw';
@@ -12,14 +12,18 @@ export class ProductService {
 
     constructor(private http: HttpClient) { }
 
-    getAll() {
-        return this.http.get<Product[]>(this.apiUrl).
-            pipe (
-                map ((response: Product[]) => response),
-                catchError(err => {
-                    return _throw(err);
-                })
-            );
+    getAll(): Observable<Product[]> {
+        return this.http.get<Product[]>(this.apiUrl);
+        //     headers: new HttpHeaders()
+        //       .set('Authorization', `Bearer ${localStorage.getItem('access_token')}`)
+        //   }).
+        //     pipe (
+        //         map ((response: Product[]) =>  response),
+        //         catchError(err => {
+        //             console.log(err);
+        //             return _throw(err);
+        //         })
+        //     );
     }
 
     getProductById(id: number): Observable<Product> {

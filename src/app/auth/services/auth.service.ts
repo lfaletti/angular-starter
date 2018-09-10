@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { AUTH_CONFIG } from '../auth0-variables';
+import { stringify } from '@angular/core/src/render3/util';
 
 @Injectable()
 export class AuthService {
@@ -14,7 +15,9 @@ export class AuthService {
         clientID: AUTH_CONFIG.clientID,
         domain: AUTH_CONFIG.domain,
         responseType: 'token id_token',
-        redirectUri: AUTH_CONFIG.callbackURL
+        redirectUri: AUTH_CONFIG.callbackURL,
+        audience: 'https://test-app/api',
+        scope: 'openid profile read:products'
     });
 
     loggedInSubject = new BehaviorSubject<boolean>(false);
